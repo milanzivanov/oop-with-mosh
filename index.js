@@ -21,7 +21,7 @@ const Circle1 = new Function('radius', `
     }
 `);
 
-Circle.call({}, 1);
+Circle.call({}, 1); // same const another = new Circle(5);
 Circle.apply({}, [1, 2, 3]);
 
 // Intelisens icons
