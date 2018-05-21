@@ -1,28 +1,33 @@
-// Factory Function
-function createCircle(radius) {
-    return {
-        // properties
-        radius: radius, // shorter radius
-        // method
-        draw() {
-            console.log("Drow");
-        }
-    }
-}
+let x = {};
 
-const circle = createCircle(5);
+// transformed 
+// every object have constructor property
+// let x = new Object();
 
-// Constructor Function
+
+// functions are objects
+
 function Circle(radius) {
-    // console.log(`this`, this);
     this.radius = radius;
-    this.drow = function() {
+    this.draw = function() {
         console.log("Drow!");
     }
 }
 
-// three things happend
-// 1 this new operator create a empty object {}
-// 2 than it's gona set this to point that object
-// 3 and finaly it return object from function Circle it is automated
+const Circle1 = new Function('radius', `
+    this.radius = radius;
+    this.draw = function() {
+        console.log("Drow!");
+    }
+`);
+
+Circle.call({}, 1);
+Circle.apply({}, [1, 2, 3]);
+
+// Intelisens icons
+// Circle.prototype // properties blue
+// Circle.apply // method red
 const another = new Circle(5);
+
+const circle = new Circle1(7);
+
