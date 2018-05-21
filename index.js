@@ -1,33 +1,21 @@
-let x = {};
-
-// transformed 
-// every object have constructor property
-// let x = new Object();
-
-
-// functions are objects
+// Adding/Removing Properties
 
 function Circle(radius) {
     this.radius = radius;
-    this.draw = function() {
-        console.log("Drow!");
+    this.drow = function() {
+        console.log('Drow!!!'); 
+        
     }
 }
 
-const Circle1 = new Function('radius', `
-    this.radius = radius;
-    this.draw = function() {
-        console.log("Drow!");
-    }
-`);
+const circle = new Circle(11);
 
-Circle.call({}, 1); // same const another = new Circle(5);
-Circle.apply({}, [1, 2, 3]);
+circle.location = { x: 3 };
+// same
+// bracket notetion
+// circle['location'] = { x: 3 };
 
-// Intelisens icons
-// Circle.prototype // properties blue
-// Circle.apply // method red
-const another = new Circle(5);
+delete circle.location;
+// delete circle['location'];
 
-const circle = new Circle1(7);
-
+console.log(circle);
