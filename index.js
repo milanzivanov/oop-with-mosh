@@ -22,8 +22,18 @@ class User {
     }
 }
 
+// Class Inheritance
+class Admin extends User {
+    deleteUser(user) {
+        users = users.filter(u => {
+            return u.email !== user.email;
+        });
+    }
+}
+
 let userOne = new User('milanodituti@m.com', 'Mlano');
 let userTwo = new User('ivandituti@m.com', 'Ivano');
+let admin = new Admin('miki@m.com', 'Miki');
 
 // The 'new' keyword
 // Creates a nnew empty object {}
@@ -31,3 +41,9 @@ let userTwo = new User('ivandituti@m.com', 'Ivano');
 // Calls the constructor method
 userOne.login().logout().updateScore();
 userTwo.logout().updateScore().updateScore();
+
+let users = [userOne, userTwo, admin];
+
+admin.deleteUser(userOne);
+
+console.log(users);
