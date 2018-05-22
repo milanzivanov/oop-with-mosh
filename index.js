@@ -1,28 +1,24 @@
-// Factory Function
-function createCircle(radius) {
-    return {
-        // properties
-        radius: radius, // shorter radius
-        // method
-        draw() {
-            console.log("Drow");
-        }
+// Class & Methods
+
+class User {
+    constructor(email, name) {
+        this.email = email;
+        this.name = name;
+    }
+    login() {
+        console.log(this.email, 'just logged in');
+    }
+    logout() {
+        console.log(this.email, 'just logged out');
     }
 }
 
-const circle = createCircle(5);
+let userOne = new User('milanodituti@m.com', 'Mlano');
+let userTwo = new User('ivandituti@m.com', 'Ivano');
 
-// Constructor Function
-function Circle(radius) {
-    // console.log(`this`, this);
-    this.radius = radius;
-    this.drow = function() {
-        console.log("Drow!");
-    }
-}
-
-// three things happend
-// 1 this new operator create a empty object {}
-// 2 than it's gona set this to point that object
-// 3 and finaly it return object from function Circle it is automated
-const another = new Circle(5);
+// The 'new' keyword
+// Creates a nnew empty object {}
+// Sets the value of 'this' to be the new empty object
+// Calls the constructor method
+userOne.login();
+userTwo.logout();
