@@ -1,14 +1,15 @@
-// prototype vs Instance members
+// Itereting properties
 
 function Circle(radius) {
     // Instance members
     this.radius = radius;
 
     this.move = function() {
-        this.drow();
         console.log('move');
     }
 }
+
+const c1 = new Circle(2);
 
 // Prototype members
 Circle.prototype.drow = function() {
@@ -16,9 +17,12 @@ Circle.prototype.drow = function() {
     console.log('drow');
 }
 
-const c1 = new Circle(2);
-const c2 = new Circle(5);
+// Returns instance members
+console.log(Object.keys(c1));
 
-Circle.prototype.toString = function() {
-    return 'Circle with radius ' + this.radius;
+// Returns all members (instance + prototype)
+for (let key in c1) {
+    console.log(key);
 }
+
+
