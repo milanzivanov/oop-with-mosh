@@ -1,28 +1,40 @@
-// Itereting properties
+function Stopwatch() {
+    let startTime, endTime, running, duration = 0;
 
-function Circle(radius) {
-    // Instance members
-    this.radius = radius;
+    this.start = function() {
+        if(running) {
+            throw new Error('Stopwatch has already started.');
+        }
+        running = true;
 
-    this.move = function() {
-        console.log('move');
+        startTime = new Date(); 
+    };
+
+    this.stop = function() {
+        if(!running) {
+            throw new Error('Stopwatch has not started.');
+        }
+        running = false;
+
+        endTime = new Date();
+
+        const seconds = (endTime.getTime() - startTime.getTime()) / 1000;
+        duration += seconds;
     }
+
+    this.reset = function() { 
+        startTime = null;
+        endTime = null;
+        running = false;
+        duration = 0;
+    }
+
+    Object.defineProperty(this, 'duration', {
+        get: function() {
+            return duration;
+        }
+    });
 }
 
-const c1 = new Circle(2);
-
-// Prototype members
-Circle.prototype.drow = function() {
-    // this.move();
-    console.log('drow');
-}
-
-// Returns instance members
-console.log(Object.keys(c1));
-
-// Returns all members (instance + prototype)
-for (let key in c1) {
-    console.log(key);
-}
-
+let sw = new Stopwatch();
 
