@@ -1,46 +1,37 @@
-// Constructors
+// constructor function
+// function Circle(radius) {
+//     this.radius = radius;
 
-function User (email, name) {
-    this.email = email;
-    this.name = name;
-    this.online = false;
+//     this.draw = function() {
+//         console.log('draw');
+        
+//     }
+// }
+
+// class declaration
+class Circle {
+    constructor(radius) {
+        this.radius = radius;
+        this.move = function() {
+        }
+    }
+    // instance method
+    draw() {
+        console.log('drow');
+    }
+
+    // static methos
+    static pase(str) {
+        JSON.parse(str)
+    }
 }
 
-User.prototype.login = function() {
-    this.online = true;
-    console.log(this.email, 'just logged in');
-}
+const c = new Circle(1);
+console.log(circle);
 
-User.prototype.logout = function() {
-    this.online = false;
-    console.log(this.email, 'just logged out');
-}
 
-function Admin(...args) {
-    console.log(args);
-    User.apply(this, args);
-    this.role = 'Super user';
-}
+// class expresion
 
-// inherit User
-Admin.prototype = Object.create(User.prototype);
+const Something = class {
 
-Admin.prototype.deliteUser = function(u) {
-    users = users.filter(user => {
-        return user.email !== u.email;
-    });
 };
-
-let userOne = new User('milanodituti@m.com', 'Mlano');
-let userTwo = new User('ivandituti@m.com', 'Ivano');
-let admin = new Admin('learning@m.com', 'Kiki');
-
-let users = [userOne, userTwo, admin];
-
-// The 'new' keyword
-// Creates a new empty object {}
-// Sets the value of 'this' to be the new empty object
-// Calls the constructor method
-
-console.log(admin);
-
